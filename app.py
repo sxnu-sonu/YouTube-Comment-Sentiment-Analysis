@@ -12,10 +12,14 @@ import numpy as np
 import joblib
 import re
 import pandas as pd
+import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 import matplotlib.dates as mdates
 import os
+
+nltk.download('stopwords')
+nltk.download('wordnet')
 
 app = Flask(__name__)
 CORS(app) 
@@ -67,8 +71,8 @@ def load_model_and_vectorizer(model_path, vectorizer_path):
 
 # Initialize the model and vectorizer
 # Paths are relative to the flask_app directory
-MODEL_PATH = "../lgbm_model.pkl"
-VECTORIZER_PATH = "../tfidf_vectorizer.pkl"
+MODEL_PATH = "lgbm_model.pkl"
+VECTORIZER_PATH = "tfidf_vectorizer.pkl"
 
 model, vectorizer = load_model_and_vectorizer(MODEL_PATH, VECTORIZER_PATH)
 
